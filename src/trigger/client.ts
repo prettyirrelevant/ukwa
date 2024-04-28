@@ -124,31 +124,32 @@ export const createTriggerClient = (opts: {
                 accountId: account.id,
                 metadata: txMetadata,
                 txType: 'withdrawal',
-                status: 'pending',
+                status: 'success',
                 id: txId,
               }),
           );
 
-          if (!account.isPaymentDetailsLinked) return;
+          // for sandbox environment, this does not matter as you cannot akshually top up.
+          // if (!account.isPaymentDetailsLinked) return;
 
-          const response = await io.runTask(
-            'initiate transfer',
-            async () =>
-              await paystack.transfer(
-                (BigInt(formattedAmount) * BigInt(100)).toString(),
-                account.paymentDetails?.paystack.trfRecipientCode as string,
-                txId,
-              ),
-          );
+          // const response = await io.runTask(
+          //   'initiate transfer',
+          //   async () =>
+          //     await paystack.transfer(
+          //       (BigInt(formattedAmount) * BigInt(100)).toString(),
+          //       account.paymentDetails?.paystack.trfRecipientCode as string,
+          //       txId,
+          //     ),
+          // );
 
-          await io.runTask(
-            'update transaction metadata',
-            async () =>
-              await db
-                .update(schema.transactions)
-                .set({ metadata: { ...txMetadata, paystack: response } })
-                .where(eq(schema.transactions.id, txId)),
-          );
+          // await io.runTask(
+          //   'update transaction metadata',
+          //   async () =>
+          //     await db
+          //       .update(schema.transactions)
+          //       .set({ metadata: { ...txMetadata, paystack: response } })
+          //       .where(eq(schema.transactions.id, txId)),
+          // );
         });
       }
 
