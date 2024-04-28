@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "moduleResolution": "Bundler",
+      "strict": true,
+      "lib": ["ESNext"],
+      "types": ["@cloudflare/workers-types"],
+      "jsx": "react-jsx",
+      "jsxImportSource": "hono/jsx",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "esModuleInterop": true,
+      "noEmit": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noImplicitReturns": true,
+      "skipLibCheck": true
+    },
+    "ts-node": {
+      "compilerOptions": {
+        "module": "CommonJS"
+      }
+    },
+    "include": [".eslintrc.cjs", "src", "drizzle.config.ts"]
+  }

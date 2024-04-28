@@ -1,0 +1,35 @@
+{
+  "name": "@wrapped-naira/ukwa",
+  "type": "module",
+  "scripts": {
+    "db:migrate": "infisical run -- ts-node src/db/migrate.ts",
+    "db:push": "infisical run -- drizzle-kit push:pg",
+    "deploy": "wrangler deploy --minify src/index.ts",
+    "db:generate": "drizzle-kit generate:pg",
+    "format": "eslint . --ext .ts,.js --fix",
+    "dev": "wrangler dev src/index.ts"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.6.0",
+    "@trigger.dev/hono": "^2.3.18",
+    "@trigger.dev/sdk": "^2.3.18",
+    "drizzle-orm": "^0.30.7",
+    "hono": "^4.2.2",
+    "nanoid": "^5.0.7",
+    "postgres": "^3.4.4",
+    "viem": "^2.9.15"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240403.0",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
+    "drizzle-kit": "^0.20.14",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-perfectionist": "^2.8.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "wrangler": "^3.47.0"
+  }
+}
