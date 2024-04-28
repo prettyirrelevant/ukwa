@@ -1,4 +1,4 @@
-import { getAddress } from 'viem';
+import { defineChain, getAddress} from 'viem';
 
 export const WngnAbi = [
   {
@@ -506,3 +506,31 @@ export const WngnAbi = [
 export const WngnInitBlock = 4117692n;
 
 export const WngnAddress = getAddress('0xAF97c3478ABF6EEAc933d3383B71668F314400aA');
+
+export const scrollSepoliaAnkr = defineChain({
+  blockExplorers: {
+    default: {
+      apiUrl: 'https://sepolia-blockscout.scroll.io/api',
+      url: 'https://sepolia-blockscout.scroll.io',
+      name: 'Blockscout',
+    },
+  },
+  contracts: {
+    multicall3: {
+      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      blockCreated: 9473,
+    },
+  },
+  rpcUrls: {
+    default: {
+      http: ['https://rpc.ankr.com/scroll_sepolia_testnet'],
+    },
+  },
+  nativeCurrency: {
+    name: 'Ether',
+    symbol: 'ETH',
+    decimals: 18,
+  },
+  name: 'Scroll Sepolia',
+  id: 534_351,
+})

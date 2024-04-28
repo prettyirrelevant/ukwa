@@ -9,13 +9,12 @@ import {
 } from 'viem';
 import { intervalTrigger, TriggerClient } from '@trigger.dev/sdk';
 import { privateKeyToAccount } from 'viem/accounts';
-import { optimismSepolia } from 'viem/chains';
 import { getContract } from 'viem';
 import { eq } from 'drizzle-orm';
 import crypto from 'node:crypto';
 
+import { scrollSepoliaAnkr, WngnInitBlock, WngnAddress, WngnAbi } from '../constants';
 import { getOrCreateAccount, createConnection, schema, newId } from '../db';
-import { WngnInitBlock, WngnAddress, WngnAbi } from '../constants';
 import { DepositWebhookPayload, Paystack } from '../services';
 
 export const createTriggerClient = (opts: {
@@ -33,12 +32,12 @@ export const createTriggerClient = (opts: {
 
   const db = createConnection(opts.databaseUrl);
   const publicClient = createPublicClient({
-    chain: optimismSepolia,
+    chain: scrollSepoliaAnkr,
     transport: http(),
   });
   const deployer = privateKeyToAccount(opts.privateKey);
   const walletClient = createWalletClient({
-    chain: optimismSepolia,
+    chain: scrollSepoliaAnkr,
     transport: http(),
     account: deployer,
   });
